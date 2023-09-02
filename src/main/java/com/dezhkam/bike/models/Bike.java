@@ -1,5 +1,7 @@
 package com.dezhkam.bike.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +17,7 @@ import java.sql.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Bike{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +29,7 @@ public class Bike{
     private String model;
     private String serialNumber;
     private BigDecimal purchasePrice;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "MM-dd-yy")
     private Date purchaseDate;
     private boolean contact;
 
